@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://herring.users.cs.helsinki.fi/spirraw/)
-* [Linkki dokumentaatiooni](https://github.com/spirraw/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.txt)
+* [Linkki dokumentaatiooni](https://github.com/spirraw/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
 
