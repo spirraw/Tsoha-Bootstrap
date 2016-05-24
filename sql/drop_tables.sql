@@ -1,1 +1,3 @@
--- Lisää DROP TABLE lauseet tähän tiedostoon
+DROP TABLE IF EXISTS Pokemon CASCADE;
+DROP TABLE IF EXISTS Player CASCADE;
+DROP TABLE IF EXISTS OwnedPokemon CASCADE;
