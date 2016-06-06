@@ -8,12 +8,19 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $pikachu = Pokemon::find(1);
+        $pokemon = Pokemon::all();
+        
+        Kint::dump($pikachu);
+        Kint::dump($pokemon);
     }
 
     public static function login() {
         View::make('util/login.html');
+    }
+    
+    public static function pokemon_list() {
+        View::make('general/pokemon_list.html');
     }
     
     public static function owned_list() {
