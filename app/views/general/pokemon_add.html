@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Lisää uusi pokemon</h1>
+<h1>Lisää uusi pokemon</h1>
 
-  <form method="post" action="{{base_path}}/pokemon">
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/pokemon">
     <div class="form-group">
-      <label>Nimi</label>
-      <input type="text" name="name" class="form-control">
+        <label>Nimi</label>
+        <input type="text" name="name" class="form-control">
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Lisää</button>
+        <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
-  </form>
+</form>
 {% endblock %}

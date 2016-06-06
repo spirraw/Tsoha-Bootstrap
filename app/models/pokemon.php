@@ -4,8 +4,10 @@ class Pokemon extends BaseModel {
 
     public $id, $name;
 
-    public function _construct($attributes) {
-        parent::_construct($attributes);
+    public function __construct($attributes) {
+        parent::__construct($attributes);
+        
+        $this->validators = array('nameCheck', 'duplicatePokemonNameCheck');
     }
 
     public static function all() {
@@ -49,5 +51,5 @@ class Pokemon extends BaseModel {
 
         $this->id = $row['id'];
     }
-
+    
 }

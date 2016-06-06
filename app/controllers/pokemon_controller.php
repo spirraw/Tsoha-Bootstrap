@@ -17,22 +17,29 @@ class PokemonController extends BaseController {
     }
 
     public static function create() {
-        
+
         View::make('general/pokemon_add.html');
-        
     }
-    
+
     public static function store() {
 
         $params = $_POST;
         
-        $pokemon = new Pokemon(array(
-            'name' => $params['name']
-        ));
+        $name = ucwords(strtolower(preg_replace("/[^A-Za-z ]/", '', $params['name'])));
 
-        $pokemon->save();
+        $attributes = array(
+            'name' => $name
+        );
 
-        Redirect::to('/pokemon', array('message' => 'Pokemon on lisätty tietokantaan!'));
+        $pokemon = new Pokemon($attributes);
+        $errors = $pokemon->errors();
+        
+        if (count($errors) == 0) {
+            $pokemon->save();
+            Redirect::to('/pokemon', array('message' => 'Pokemon on lisätty tietokantaan!'));
+        } else {
+            View::make('general/pokemon_add.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 
 }
