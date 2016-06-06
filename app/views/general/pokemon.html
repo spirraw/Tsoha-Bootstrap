@@ -7,14 +7,20 @@
 </p>
 <!-- Tiedot tulee listana tähän -->
 <ul>
-    <li><strong>Level:</strong> 5</li>
-    <li><strong>HP:</strong> 35</li>
-    <li><strong>Attack:</strong> 55</li>
-    <li><strong>Defense:</strong> 30</li>
+    <li><strong>Tyyppi:</strong> {{pokemon.ptype}}</li>
+    <li><strong>HP:</strong> {{pokemon.bhp}}</li>
+    <li><strong>Attack:</strong> {{pokemon.battack}}</li>
+    <li><strong>Defense:</strong> {{pokemon.bdefense}}</li>
+    <li><strong>Special Attack:</strong> {{pokemon.bspattack}}</li>
+    <li><strong>Special Defense:</strong> {{pokemon.bspdefense}}</li>
+    <li><strong>Speed:</strong> {{pokemon.bspeed}}</li>
+    {% if evolution_of_id %}
+    <li>Kehittyy {{pokemon.evolution_of_id}}:sta</li>
+    {% endif %}
 </ul>
 <!-- Kuvaus tulee tähän -->
 <p>
-    Sadistinen keltainen tuholainen, nauttii ihmisten sähköttämisestä.
+    {{pokemon.description}}
 </p>
 {% endblock %}
 

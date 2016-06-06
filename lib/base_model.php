@@ -28,7 +28,7 @@ class BaseModel {
     }
 
     private function nameCheck() {
-        return $this->stringCheck($this->name);
+        return $this->stringCheck('Nimi', $this->name);
     }
 
     private function duplicatePokemonNameCheck() {
@@ -50,14 +50,27 @@ class BaseModel {
         return $errors;
     }
 
-    private function stringCheck($string) {
+    protected function stringCheck($check, $string) {
         $errors = array();
 
         if (empty($string)) {
-            $errors[] = 'Nimi ei saa olla tyhjä!';
+            $errors[] =  $check . ' ei saa olla tyhjä!';
         }
 
         return $errors;
     }
 
+    protected function valCheck($check, $val) {
+        $errors = array();
+        
+        if(empty($val)) {
+            $errors[] = $check . ' ei saa olla tyhjä!';
+        }
+        
+        if(!is_numeric($val)) {
+            $errors[] = $check . ':n ' . $val . ' ei ole luku!';
+        }
+        
+        return $errors;
+    }
 }

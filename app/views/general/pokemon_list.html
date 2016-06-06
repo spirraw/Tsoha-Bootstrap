@@ -16,6 +16,7 @@
     <thead>
         <tr>
             <th>Nimi</th>
+            <th>Tyyppi</th>
         </tr>
     </thead>
 
@@ -23,6 +24,7 @@
         {% for pokemon in pokemons %}
         <tr>
             <td><a href="{{base_path}}/pokemon/{{pokemon.id}}">{{pokemon.name}}</a></td>
+             <td>{{pokemon.ptype}}</td>
         </tr>
         {% endfor %}
     </tbody>

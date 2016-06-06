@@ -26,9 +26,23 @@ class PokemonController extends BaseController {
         $params = $_POST;
         
         $name = ucwords(strtolower(preg_replace("/[^A-Za-z ]/", '', $params['name'])));
-
+        
+        $evolution_of_id = null;
+        if(strlen($params['evolution_of_id']) > 0) {
+            $evolution_of_id = $params['evolution_of_id'];
+        }
+        
         $attributes = array(
-            'name' => $name
+            'name' => $name,
+            'evolution_of_id' => $evolution_of_id,
+            'ptype' => $params['ptype'],
+            'bhp' => $params['bhp'],
+            'battack' => $params['battack'],
+            'bdefense' => $params['bdefense'],
+            'bspattack' => $params['bspattack'],
+            'bspdefense' => $params['bspdefense'],
+            'bspeed' => $params['bspeed'],
+            'description' => $params['description']
         );
 
         $pokemon = new Pokemon($attributes);
