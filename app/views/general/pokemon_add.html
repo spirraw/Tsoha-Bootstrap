@@ -15,25 +15,25 @@
 <form method="post" action="{{base_path}}/pokemon">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" name="name" class="form-control" value="{{attributes.name}}">
+        <input type="text" name="name" class="form-control" value="{{attributes.name}}" maxlength="20">
         <label>Aiemman evoluution id (Ei pakollinen)</label>
-        <input type="text" name="evolution_of_id" class="form-control" value="{{attributes.evolution_of_id}}">
+        <input type="text" name="evolution_of_id" class="form-control" value="{{attributes.evolution_of_id}}" maxlength="5">
         <label>Tyyppi</label>
-        <input type="text" name="ptype" class="form-control" value="{{attributes.ptype}}">
+        <input type="text" name="ptype" class="form-control" value="{{attributes.ptype}}" maxlength="10">
         <label>HP</label>
-        <input type="text" name="bhp" class="form-control" value="{{attributes.bhp}}">
+        <input type="text" name="bhp" class="form-control" value="{{attributes.bhp}}" maxlength="5">
         <label>Attack</label>
-        <input type="text" name="battack" class="form-control" value="{{attributes.battack}}">
+        <input type="text" name="battack" class="form-control" value="{{attributes.battack}}" maxlength="5">
         <label>Defense</label>
-        <input type="text" name="bdefense" class="form-control" value="{{attributes.bdefense}}">
+        <input type="text" name="bdefense" class="form-control" value="{{attributes.bdefense}}" maxlength="5">
         <label>Special Attack</label>
-        <input type="text" name="bspattack" class="form-control" value="{{attributes.bspattack}}">
+        <input type="text" name="bspattack" class="form-control" value="{{attributes.bspattack}}" maxlength="5">
         <label>Special Defense</label>
-        <input type="text" name="bspdefense" class="form-control" value="{{attributes.bspdefense}}">
+        <input type="text" name="bspdefense" class="form-control" value="{{attributes.bspdefense}}" maxlength="5">
         <label>Speed</label>
-        <input type="text" name="bspeed" class="form-control" value="{{attributes.bspeed}}">
+        <input type="text" name="bspeed" class="form-control" value="{{attributes.bspeed}}" maxlength="5">
         <label>Kuvaus</label>
-        <input type="text" name="description" class="form-control" value="{{attributes.description}}">
+        <input type="text" name="description" class="form-control" value="{{attributes.description}}" maxlength="300">
     </div>
 
     <div class="form-group">
