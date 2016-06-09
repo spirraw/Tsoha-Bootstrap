@@ -4,7 +4,7 @@ class HelloWorldController extends BaseController {
 
     public static function index() {
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-        echo 'Tämä on etusivu!';
+        Redirect::to('/login');
     }
 
     public static function sandbox() {
