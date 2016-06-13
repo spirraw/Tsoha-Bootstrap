@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{pokemon.name}}</h1>
+{% import "macros/forms.html" as forms %}
+<h1>{{pokemon.name}}
 <!-- Painikkeet tähän -->
-<p>
-    <a href="#" class="btn btn-default">Lisää</a>
-</p>
+<a href="#" class="btn btn-default">Lisää</a>
+{{forms.edit_button("#{base_path}/pokemon/#{pokemon.id}/edit")}}
+{{forms.destroy_button("#{base_path}/pokemon/#{pokemon.id}/destroy")}}
+</h1>
 <!-- Tiedot tulee listana tähän -->
+<p><strong>Ominaisuudet:</strong></p>
 <ul>
     <li><strong>Tyyppi:</strong> {{pokemon.ptype}}</li>
     <li><strong>HP:</strong> {{pokemon.bhp}}</li>
@@ -19,6 +22,7 @@
     {% endif %}
 </ul>
 <!-- Kuvaus tulee tähän -->
+<p> <strong>Kuvaus:</strong> </p>
 <p>
     {{pokemon.description}}
 </p>

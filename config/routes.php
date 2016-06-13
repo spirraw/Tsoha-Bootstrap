@@ -1,6 +1,6 @@
 <?php
 $routes->get('/', function() {
-    HelloWorldController::index();
+    UtilController::index();
 });
 
 $routes->get('/hiekkalaatikko', function() {
@@ -8,7 +8,11 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/login', function() {
-    HelloWorldController::login();
+    UtilController::login();
+});
+
+$routes->post('/login', function() {
+    UtilController::handle_login();
 });
 
 $routes->get('/pokemon', function() {
@@ -27,15 +31,15 @@ $routes->get('/pokemon/:id', function($id) {
     PokemonController::show($id);
 });
 
-$routes->get('pokemon/:id/edit', function($id) {
+$routes->get('/pokemon/:id/edit', function($id) {
     PokemonController::edit($id);
 });
 
-$routes->post('pokemon/:id/edit', function($id) {
+$routes->post('/pokemon/:id/edit', function($id) {
     PokemonController::update($id);
 });
 
-$routes->post('pokemon/:id/destroy', function($id) {
+$routes->post('/pokemon/:id/destroy', function($id) {
     PokemonController::destroy($id);
 });
 

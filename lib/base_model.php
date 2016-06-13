@@ -35,7 +35,7 @@ class BaseModel {
         return $this->duplicateNameCheck('Pokemon');
     }
     
-    private function duplicateNameCheck($table) {
+    protected function duplicateNameCheck($table) {
         $errors = array();
         $query = DB::connection()->prepare('SELECT * FROM ' . $table . ' WHERE name = :name');
         $query->bindValue(':name', $this->name);

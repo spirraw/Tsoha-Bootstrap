@@ -25,11 +25,11 @@ class PokemonController extends BaseController {
             'bspattack' => filter_input(INPUT_POST, 'bspattack'),
             'bspdefense' => filter_input(INPUT_POST, 'bspdefense'),
             'bspeed' => filter_input(INPUT_POST, 'bspeed'),
-            'description' => filter_input(INPUT_POST, 'bdescription')
+            'description' => filter_input(INPUT_POST, 'description')
         );
 
         $pokemon = new Pokemon($attributes);
-        $errors = $pokemon->errors();
+        $errors = $pokemon->errors(false);
 
         if (count($errors) > 0) {
             View::make('general/pokemon_add.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -55,11 +55,11 @@ class PokemonController extends BaseController {
             'bspattack' => filter_input(INPUT_POST, 'bspattack'),
             'bspdefense' => filter_input(INPUT_POST, 'bspdefense'),
             'bspeed' => filter_input(INPUT_POST, 'bspeed'),
-            'description' => filter_input(INPUT_POST, 'bdescription')
+            'description' => filter_input(INPUT_POST, 'description')
         );
 
         $pokemon = new Pokemon($attributes);
-        $errors = $pokemon->errors();
+        $errors = $pokemon->errors(true);
 
         if (count($errors) > 0) {
             View::make('general/pokemon_edit.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -70,7 +70,8 @@ class PokemonController extends BaseController {
     }
 
     public static function destroy($id) {
-        Pokemon(array('id' => $id))->destroy();
+        $pokemon = new Pokemon(array('id' => $id));
+        $pokemon->destroy();
         Redirect::to('/pokemon', array('message' => 'Pokemon on poistettu onnistuneesti!'));
     }
 }    
