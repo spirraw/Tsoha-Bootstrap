@@ -2,7 +2,7 @@ CREATE TABLE Pokemon(
   id SERIAL PRIMARY KEY,
   evolution_of_id INTEGER REFERENCES Pokemon(id),
   name varchar(20) NOT NULL,
-  ptype varchar(10) NOT NULL,
+  ptype varchar(20) NOT NULL,
   bhp INTEGER NOT NULL,
   battack INTEGER NOT NULL,
   bdefense INTEGER NOT NULL,

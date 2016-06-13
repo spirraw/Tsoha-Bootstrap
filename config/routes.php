@@ -1,5 +1,4 @@
 <?php
-
 $routes->get('/', function() {
     HelloWorldController::index();
 });
@@ -26,6 +25,18 @@ $routes->get('/pokemon/new', function() {
 
 $routes->get('/pokemon/:id', function($id) {
     PokemonController::show($id);
+});
+
+$routes->get('pokemon/:id/edit', function($id) {
+    PokemonController::edit($id);
+});
+
+$routes->post('pokemon/:id/edit', function($id) {
+    PokemonController::update($id);
+});
+
+$routes->post('pokemon/:id/destroy', function($id) {
+    PokemonController::destroy($id);
 });
 
 $routes->get('/owned', function() {
