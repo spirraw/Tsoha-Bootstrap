@@ -16,5 +16,5 @@ Yleisiä linkkejä:
 * [Oman pokemonin muokkaus](https://herring.users.cs.helsinki.fi/spirraw/owned/edit)
 
 ## Tunnus
-Käyttäjätunnus: spira
-Salasana: asdfg
+- Käyttäjätunnus: spira
+- Salasana: asdfg
