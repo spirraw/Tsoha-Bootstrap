@@ -21,8 +21,18 @@ CREATE TABLE Player(
 );
 
 CREATE TABLE OwnedPokemon(
+  id SERIAL PRIMARY KEY,
   pokemon_id INTEGER REFERENCES Pokemon(id),
   player_id INTEGER REFERENCES Player(id),
   name varchar(20) NOT NULL,
-  nickname varchar(20)
+  nickname varchar(20),
+  added date NOT NULL,
+  ptype varchar(20) NOT NULL,
+  ohp INTEGER NOT NULL,
+  oattack INTEGER NOT NULL,
+  odefense INTEGER NOT NULL,
+  ospattack INTEGER NOT NULL,
+  ospdefense INTEGER NOT NULL,
+  ospeed INTEGER NOT NULL,
+  description varchar(300) NOT NULL
 );

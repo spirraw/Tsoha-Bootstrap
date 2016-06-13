@@ -13,19 +13,20 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Nimi</th>
             <th>Lempinimi</th>
+            <th>Pokemon</th>
             <th>Lisäyspäivä</th>
         </tr>
     </thead>
 
     <tbody>
-        <!-- Listataan pokemonit tähän -->
+        {% for own in owned %}
         <tr>
-            <td><a href="#">Pikachu</a></td>
-            <td>Sähkörotta</td>
-            <td>9.12.2014</td>
+            <td>{{own.nickname}}</td>
+            <td><a href="{{base_path}}/owned/{{own.id}}">{{own.name}}</a></td>
+            <td>{{own.added}}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

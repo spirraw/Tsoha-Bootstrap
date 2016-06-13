@@ -84,7 +84,7 @@ class Pokemon extends BaseModel {
     public function errors($update) {
         $errors = parent::errors();
         if(!$update) {
-            $errors = array_merge($errors, parent::duplicateNameCheck('Pokemon'));
+            $errors = array_merge($errors, parent::duplicateNameCheck('Pokemon', $this->name));
         }
         if($this->evolution_of_id != null && $this->find($this->evolution_of_id) == null) {
             $errors[] = 'Pokemonia id:llä ' . $this->evolution_of_id . ' ei ole!';

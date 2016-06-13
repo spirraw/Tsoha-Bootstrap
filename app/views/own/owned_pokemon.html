@@ -1,20 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Sähkörotta</h1>
-<!-- Painikkeet tähän -->
-<p>
-    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
-</p>
-<!-- Tiedot tulee listana tähän -->
-<p><strong>Pikachu</strong></p>
+{% import "macros/forms.html" as forms %}
+{% if owned.nickname is empty %}
+<h1><a href="{{base_path}}/pokemon/{{owned.pokemon_id}}">{{owned.name}}</a>
+{{forms.edit_button("#{base_path}/owned/#{owned.id}/edit")}}
+{{forms.destroy_button("#{base_path}/owned/#{owned.id}/destroy")}}
+</h1>
+{% else %}
+<h1>{{owned.nickname}}
+{{forms.edit_button("#{base_path}/owned/#{owned.id}/edit")}}
+{{forms.destroy_button("#{base_path}/owned/#{owned.id}/destroy")}}
+</h1>
+<a href="{{base_path}}/pokemon/{{owned.pokemon_id}}"><strong>{{owned.name}}</strong></a>
+{% endif %}
+<p><strong>Ominaisuudet:</strong></p>
 <ul>
-    <li><strong>Level:</strong> 5</li>
-    <li><strong>HP:</strong> 35</li>
-    <li><strong>Attack:</strong> 55</li>
-    <li><strong>Defense:</strong> 30</li>
+    <li><strong>Tyyppi:</strong> {{owned.ptype}}</li>
+    <li><strong>HP:</strong> {{owned.ohp}}</li>
+    <li><strong>Attack:</strong> {{owned.oattack}}</li>
+    <li><strong>Defense:</strong> {{owned.odefense}}</li>
+    <li><strong>Special Attack:</strong> {{owned.ospattack}}</li>
+    <li><strong>Special Defense:</strong> {{owned.ospdefense}}</li>
+    <li><strong>Speed:</strong> {{owned.ospeed}}</li>
 </ul>
-<!-- Kuvaus tulee tähän -->
+
+<p> <strong>Kuvaus:</strong> </p>
+
 <p>
-    Sadistinen keltainen tuholainen, nauttii ihmisten sähköttämisestä.
+    {{owned.description}}
 </p>
 {% endblock %}

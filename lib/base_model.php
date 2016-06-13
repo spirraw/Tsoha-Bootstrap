@@ -35,16 +35,16 @@ class BaseModel {
         return $this->duplicateNameCheck('Pokemon');
     }
     
-    protected function duplicateNameCheck($table) {
+    protected function duplicateNameCheck($table, $name) {
         $errors = array();
         $query = DB::connection()->prepare('SELECT * FROM ' . $table . ' WHERE name = :name');
-        $query->bindValue(':name', $this->name);
+        $query->bindValue(':name', $name);
         $query->execute();
 
         $rows = $query->fetchAll();
         
         if(count($rows) > 0) {
-            $errors[] = $this->name . ' on jo olemassa!';
+            $errors[] = $name . ' on jo olemassa!';
         }
 
         return $errors;

@@ -1,27 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Muokkaa pokemonia Sähkörotta (Pikachu)</h1>
+<h1>Muokkaa kokoelmasi {{attributes.name}}:a</h1>
 
-<form>
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/owned/{{attributes.id}}/edit">
     <div class="form-group">
-        <label>Lempinimi</label>
-        <input type="text" class="form-control" value="Sähkörotta">
-    </div>
-    <div class="form-group">
-        <label>Level</label>
-        <input type="text" class="form-control" value="5">
-    </div>
-    <div class="form-group">
+        <label>Lempinimi (ei pakollinen)</label>
+        <input type="text" name="nickname" class="form-control" value="{{attributes.nickname}}" maxlength="20">
         <label>HP</label>
-        <input type="text" class="form-control" value="35">
-    </div>
-    <div class="form-group">
+        <input type="text" name="ohp" class="form-control" value="{{attributes.ohp}}" maxlength="5">
         <label>Attack</label>
-        <input type="text" class="form-control" value="55">
-    </div>
-    <div class="form-group">
+        <input type="text" name="oattack" class="form-control" value="{{attributes.oattack}}" maxlength="5">
         <label>Defense</label>
-        <input type="text" class="form-control" value="40">
+        <input type="text" name="odefense" class="form-control" value="{{attributes.odefense}}" maxlength="5">
+        <label>Special Attack</label>
+        <input type="text" name="ospattack" class="form-control" value="{{attributes.ospattack}}" maxlength="5">
+        <label>Special Defense</label>
+        <input type="text" name="ospdefense" class="form-control" value="{{attributes.ospdefense}}" maxlength="5">
+        <label>Speed</label>
+        <input type="text" name="ospeed" class="form-control" value="{{attributes.ospeed}}" maxlength="5">
     </div>
 
     <div class="form-group">

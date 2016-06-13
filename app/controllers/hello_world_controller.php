@@ -8,12 +8,27 @@ class HelloWorldController extends BaseController {
     }
 
     public static function sandbox() {
-        $piketchup = new Pokemon(array(
-            'name' => '',
-        ));
+        $pokemon = Owned::find(2);
+        
+        $attributes = array(
+            'pokemon_id' => $pokemon->pokemon_id,
+            'player_id' => $pokemon->player_id,
+            'name' => $pokemon->name,
+            'nickname' => strlen(filter_input(INPUT_POST, 'nickname')) > 0 ? filter_input(INPUT_POST, 'nickname') : null,
+            'added' => $pokemon->added,
+            'ptype' => $pokemon->ptype,
+            'ohp' => filter_input(INPUT_POST, 'ohp'),
+            'oattack' => 69,
+            'odefense' => filter_input(INPUT_POST, 'odefense'),
+            'ospattack' => filter_input(INPUT_POST, 'ospattack'),
+            'ospdefense' => filter_input(INPUT_POST, 'ospdefense'),
+            'ospeed' => filter_input(INPUT_POST, 'ospeed'),
+            'description' => $pokemon->description
+        );
 
-        $errors = $piketchup->errors();
-        Kint::dump($errors);
+        $owned = new Owned($attributes);
+        $owned->update();
+        Kint::dump($owned->id);
     }
 
     public static function login() {

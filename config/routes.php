@@ -1,4 +1,5 @@
 <?php
+
 $routes->get('/', function() {
     UtilController::index();
 });
@@ -43,14 +44,30 @@ $routes->post('/pokemon/:id/destroy', function($id) {
     PokemonController::destroy($id);
 });
 
+$routes->get('/pokemon/:id/add', function($id) {
+    OwnedController::create($id);
+});
+
+$routes->post('/pokemon/:id/add', function($id) {
+    OwnedController::store($id);
+});
+
 $routes->get('/owned', function() {
-    HelloWorldController::owned_list();
+    OwnedController::index();
 });
 
-$routes->get('/owned/pokemon', function() {
-    HelloWorldController::owned_pokemon();
+$routes->get('/owned/:id', function($id) {
+    OwnedController::show($id);
 });
 
-$routes->get('/owned/edit', function() {
-    HelloWorldController::owned_edit();
+$routes->get('/owned/:id/edit', function($id) {
+    OwnedController::edit($id);
+});
+
+$routes->post('/owned/:id/edit', function($id) {
+    OwnedController::update($id);
+});
+
+$routes->post('/owned/:id/destroy', function($id) {
+    OwnedController::destroy($id);
 });
