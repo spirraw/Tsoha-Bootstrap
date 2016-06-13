@@ -14,3 +14,7 @@ Yleisiä linkkejä:
 * [Lista omista pokemoneista](https://herring.users.cs.helsinki.fi/spirraw/owned)
 * [Oman pokemonin tiedot](https://herring.users.cs.helsinki.fi/spirraw/owned/pokemon)
 * [Oman pokemonin muokkaus](https://herring.users.cs.helsinki.fi/spirraw/owned/edit)
+* 
+## Tunnus
+Käyttäjätunnus: spira
+Salasana: asdfg
