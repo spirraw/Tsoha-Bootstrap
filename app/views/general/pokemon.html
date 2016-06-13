@@ -3,7 +3,7 @@
 {% import "macros/forms.html" as forms %}
 <h1>{{pokemon.name}}
 <!-- Painikkeet tähän -->
-<a href="#" class="btn btn-default">Lisää</a>
+<a href="#" class="btn btn-default">Lisää itselle</a>
 {{forms.edit_button("#{base_path}/pokemon/#{pokemon.id}/edit")}}
 {{forms.destroy_button("#{base_path}/pokemon/#{pokemon.id}/destroy")}}
 </h1>
