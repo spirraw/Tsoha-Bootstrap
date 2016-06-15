@@ -11,10 +11,14 @@ class PokemonController extends BaseController {
     }
 
     public static function create() {
+        self::check_logged_in();
+        
         View::make('general/pokemon_add.html');
     }
 
     public static function store() {
+        self::check_logged_in();
+        
         $attributes = array(
             'name' => ucwords(strtolower(preg_replace("/[^A-Za-z ]/", '', filter_input(INPUT_POST, 'name')))),
             'evolution_of_id' => strlen(filter_input(INPUT_POST, 'evolution_of_id')) > 0 ? filter_input(INPUT_POST, 'evolution_of_id') : null,
@@ -40,10 +44,14 @@ class PokemonController extends BaseController {
     }
 
     public static function edit($id) {
+        self::check_logged_in();
+        
         View::make('general/pokemon_edit.html', array('attributes' => Pokemon::find($id)));
     }
 
     public static function update($id) {
+        self::check_logged_in();
+        
         $attributes = array(
             'id' => $id,
             'name' => ucwords(strtolower(preg_replace("/[^A-Za-z ]/", '', filter_input(INPUT_POST, 'name')))),
@@ -70,6 +78,8 @@ class PokemonController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
+        
         $pokemon = new Pokemon(array('id' => $id));
         $pokemon->destroy();
         Redirect::to('/pokemon', array('message' => 'Pokemon on poistettu onnistuneesti!'));

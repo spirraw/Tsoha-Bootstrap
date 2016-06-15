@@ -71,3 +71,7 @@ $routes->post('/owned/:id/edit', function($id) {
 $routes->post('/owned/:id/destroy', function($id) {
     OwnedController::destroy($id);
 });
+
+$routes->post('/logout', function(){
+  UtilController::logout();
+});

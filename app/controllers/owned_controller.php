@@ -3,14 +3,20 @@
 class OwnedController extends BaseController {
 
     public static function index() {
+        self::check_logged_in();
+        
         View::make('own/owned_pokemon_list.html', array('owned' => Owned::all()));
     }
 
     public static function show($id) {
+        self::check_logged_in();
+        
         View::make('own/owned_pokemon.html', array('owned' => Owned::find($id)));
     }
 
     public static function create($id) {
+        self::check_logged_in();
+        
         $pokemon = Pokemon::find($id);
         $attributes = array(
         'pokemon_id' => $id,
@@ -28,6 +34,8 @@ class OwnedController extends BaseController {
     }
 
     public static function store($id) {
+        self::check_logged_in();
+        
         $pokemon = Pokemon::find($id);
         $attributes = array(
             'pokemon_id' => $id,
@@ -57,10 +65,14 @@ class OwnedController extends BaseController {
     }
 
     public static function edit($id) {
+        self::check_logged_in();
+        
         View::make('own/owned_pokemon_edit.html', array('attributes' => Owned::find($id)));
     }
 
     public static function update($id) {
+        self::check_logged_in();
+        
         $pokemon = Owned::find($id);
         
         $attributes = array(
@@ -92,6 +104,8 @@ class OwnedController extends BaseController {
     }
 
     public static function destroy($id) {
+        self::check_logged_in();
+        
         $owned = new Owned(array('id' => $id));
         $owned->destroy();
         Redirect::to('/owned', array('message' => 'Pokemon on poistettu onnistuneesti!'));

@@ -21,4 +21,11 @@ class UtilController extends BaseController {
         }
     }
 
+    public static function logout() {
+        self::check_logged_in();
+        
+        $_SESSION['user'] = null;
+        Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
+    }
+
 }

@@ -16,8 +16,8 @@
     <li><strong>Special Attack:</strong> {{pokemon.bspattack}}</li>
     <li><strong>Special Defense:</strong> {{pokemon.bspdefense}}</li>
     <li><strong>Speed:</strong> {{pokemon.bspeed}}</li>
-    {% if evolution_of_id %}
-    <li>Kehittyy {{pokemon.evolution_of_id}}:sta</li>
+    {% if pokemon.evolution_of_id %}
+    <li><strong>Kehittyy:</strong> <a href="{{base_path}}/pokemon/{{pokemon.evolution_of_id}}">tästä</a></li>
     {% endif %}
 </ul>
 <!-- Kuvaus tulee tähän -->
