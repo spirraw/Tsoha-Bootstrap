@@ -15,6 +15,7 @@
         <tr>
             <th>Lempinimi</th>
             <th>Pokemon</th>
+            <th>Level</th>
             <th>Lisäyspäivä</th>
         </tr>
     </thead>
@@ -22,8 +23,13 @@
     <tbody>
         {% for own in owned %}
         <tr>
-            <td>{{own.nickname}}</td>
+            {% if own.nickname %}
+            <td><a href="{{base_path}}/owned/{{own.id}}">{{own.nickname}}</a></td>
+            {% else %}
             <td><a href="{{base_path}}/owned/{{own.id}}">{{own.name}}</a></td>
+            {% endif %}
+            <td>{{own.name}}</a></td>
+            <td>{{own.lvl}}</td>
             <td>{{own.added}}</td>
         </tr>
         {% endfor %}

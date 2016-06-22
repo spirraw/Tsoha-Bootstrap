@@ -34,5 +34,24 @@ CREATE TABLE OwnedPokemon(
   ospattack INTEGER NOT NULL,
   ospdefense INTEGER NOT NULL,
   ospeed INTEGER NOT NULL,
+  lvl INTEGER NOT NULL,
   description varchar(300) NOT NULL
+);
+
+CREATE TABLE Move(
+  id SERIAL PRIMARY KEY,
+  name varchar(20) NOT NULL,
+  mtype varchar(20) NOT NULL,
+  mcat varchar(20) NOT NULL,
+  pp INTEGER NOT NULL,
+  power INTEGER NOT NULL,
+  accuracy INTEGER NOT NULL,
+  description varchar(300) NOT NULL,
+  UNIQUE (name)
+);
+
+CREATE TABLE OwnMove(
+  id SERIAL PRIMARY KEY,
+  pokemon_id INTEGER REFERENCES OwnedPokemon(id),
+  move_id INTEGER REFERENCES Move(id)
 );

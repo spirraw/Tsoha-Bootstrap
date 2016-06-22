@@ -89,6 +89,9 @@ class Pokemon extends BaseModel {
         if($this->evolution_of_id != null && $this->find($this->evolution_of_id) == null) {
             $errors[] = 'Pokemonia id:llä ' . $this->evolution_of_id . ' ei ole!';
         }
+        if($this->evolution_of_id != null && $this->evolution_of_id == $this->id) {
+            $errors[] = 'Pokemon ei voi kehittyä itsestään!';
+        }
         $errors = array_merge($errors, parent::stringCheck('Tyyppi', $this->ptype));
         $errors = array_merge($errors, parent::valCheck('HP', $this->bhp));
         $errors = array_merge($errors, parent::valCheck('Attack', $this->battack));

@@ -72,6 +72,34 @@ $routes->post('/owned/:id/destroy', function($id) {
     OwnedController::destroy($id);
 });
 
+$routes->get('/move', function() {
+    MoveController::index();
+});
+
+$routes->post('/move', function() {
+    MoveController::store();
+});
+
+$routes->get('/move/new', function() {
+    MoveController::create();
+});
+
+$routes->get('/move/:id', function($id) {
+    MoveController::show($id);
+});
+
+$routes->get('/move/:id/edit', function($id) {
+    MoveController::edit($id);
+});
+
+$routes->post('/move/:id/edit', function($id) {
+    MoveController::update($id);
+});
+
+$routes->post('/move/:id/destroy', function($id) {
+    MoveController::destroy($id);
+});
+
 $routes->post('/logout', function(){
   UtilController::logout();
 });

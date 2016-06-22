@@ -1,16 +1,67 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Lisää uusi siirto</h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/move">
+    <div class="form-group">
+        <label>Nimi</label>
+        <input type="text" name="name" class="form-control" value="{{attributes.name}}" maxlength="20">
+        <label>Tyyppi</label>
+        <select class="form-control" name="mtype">
+            {% if attributes.mtype %}
+            <option value="{{attributes.mtype}}">{{attributes.mtype}}</option>
+            {% endif %}
+            <option value="Normal">Normal</option>
+            <option value="Fire">Fire</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Water">Water</option>
+            <option value="Flying">Flying</option>
+            <option value="Grass">Grass</option>            
+            <option value="Poison">Poison</option>
+            <option value="Electric">Electric</option>
+            <option value="Ground">Ground</option>
+            <option value="Psychic">Psychic</option>
+            <option value="Rock">Rock</option>
+            <option value="Ice">Ice</option>
+            <option value="Bug">Bug</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Ghost">Ghost</option>
+            <option value="Dark">Dark</option>
+            <option value="Steel">Steel</option>
+            <option value="Fairy">Fairy</option>            
+        </select>
+        <label>Kategoria</label>
+        <select class="form-control" name="mtype">
+            {% if attributes.mcat %}
+            <option value="{{attributes.mcat}}">{{attributes.mcat}}</option>
+            {% endif %}
+            <option value="Physical">Physical</option>
+            <option value="Special">Special</option>
+            <option value="Status">Status</option>
+        </select>
+        <label>PP</label>
+        <input type="text" name="pp" class="form-control" value="{{attributes.pp}}" maxlength="20">
+        <label>Power</label>
+        <input type="text" name="power" class="form-control" value="{{attributes.power}}" maxlength="20">
+        <label>Accuracy</label>
+        <input type="text" name="accuracy" class="form-control" value="{{attributes.accuracy}}" maxlength="20">
+        <label>Kuvaus</label>
+        <input type="text" name="description" class="form-control" value="{{attributes.description}}" maxlength="300">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% endblock %}
+

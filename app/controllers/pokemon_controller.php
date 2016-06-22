@@ -13,7 +13,7 @@ class PokemonController extends BaseController {
     public static function create() {
         self::check_logged_in();
         
-        View::make('general/pokemon_add.html');
+        View::make('general/pokemon_add.html', array('evolutions' => Pokemon::all()));
     }
 
     public static function store() {
@@ -36,7 +36,7 @@ class PokemonController extends BaseController {
         $errors = $pokemon->errors(false);
 
         if (count($errors) > 0) {
-            View::make('general/pokemon_add.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('general/pokemon_add.html', array('errors' => $errors, 'attributes' => $attributes, 'evolutions' => Pokemon::all()));
         } else {
             $pokemon->save();
             Redirect::to('/pokemon', array('message' => 'Pokemon on lisätty tietokantaan!'));
@@ -46,7 +46,7 @@ class PokemonController extends BaseController {
     public static function edit($id) {
         self::check_logged_in();
         
-        View::make('general/pokemon_edit.html', array('attributes' => Pokemon::find($id)));
+        View::make('general/pokemon_edit.html', array('attributes' => Pokemon::find($id), 'evolutions' => Pokemon::all()));
     }
 
     public static function update($id) {
@@ -70,7 +70,7 @@ class PokemonController extends BaseController {
         $errors = $pokemon->errors(true);
 
         if (count($errors) > 0) {
-            View::make('general/pokemon_edit.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('general/pokemon_edit.html', array('errors' => $errors, 'attributes' => $attributes, 'evolutions' => Pokemon::all()));
         } else {
             $pokemon->update();
             Redirect::to('/pokemon', array('message' => 'Pokemonia on muokattu onnistuneesti!'));

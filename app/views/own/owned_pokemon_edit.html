@@ -16,6 +16,8 @@
     <div class="form-group">
         <label>Lempinimi (ei pakollinen)</label>
         <input type="text" name="nickname" class="form-control" value="{{attributes.nickname}}" maxlength="20">
+        <label>Level</label>
+        <input type="text" name="lvl" class="form-control" value="{{attributes.lvl}}" maxlength="3">
         <label>HP</label>
         <input type="text" name="ohp" class="form-control" value="{{attributes.ohp}}" maxlength="5">
         <label>Attack</label>
@@ -28,6 +30,46 @@
         <input type="text" name="ospdefense" class="form-control" value="{{attributes.ospdefense}}" maxlength="5">
         <label>Speed</label>
         <input type="text" name="ospeed" class="form-control" value="{{attributes.ospeed}}" maxlength="5">
+        <label>Ensimmäinen siirto (Ei pakollinen)</label>
+        <select class="form-control" name="move1">
+            {% if pmoves[0] %}
+            <option value="{{pmoves[0].id}}">{{pmoves[0].name}}</option>
+            {% endif %}
+            <option value=""></option>
+            {% for move in moves %}
+            <option value="{{move.id}}">{{move.name}}</option>
+            {% endfor %}
+        </select>
+        <label>Toinen siirto (Ei pakollinen)</label>
+        <select class="form-control" name="move2">
+            {% if pmoves[1] %}
+            <option value="{{pmoves[1].id}}">{{pmoves[1].name}}</option>
+            {% endif %}
+            <option value=""></option>
+            {% for move in moves %}
+            <option value="{{move.id}}">{{move.name}}</option>
+            {% endfor %}
+        </select>
+        <label>Kolmas siirto (Ei pakollinen)</label>
+        <select class="form-control" name="move3">
+            {% if pmoves[2] %}
+            <option value="{{pmoves[2].id}}">{{pmoves[2].name}}</option>
+            {% endif %}
+            <option value=""></option>
+            {% for move in moves %}
+            <option value="{{move.id}}">{{move.name}}</option>
+            {% endfor %}
+        </select>
+        <label>Neljäs siirto (Ei pakollinen)</label>
+        <select class="form-control" name="move4">
+            {% if pmoves[3] %}
+            <option value="{{pmoves[3].id}}">{{pmoves[3].name}}</option>
+            {% endif %}
+            <option value=""></option>
+            {% for move in moves %}
+            <option value="{{move.id}}">{{move.name}}</option>
+            {% endfor %}
+        </select>
     </div>
 
     <div class="form-group">

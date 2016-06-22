@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Siirto lista <a href="{{base_path}}/move/new" class="btn btn-success">Lisää siirto tietokantaan</a></h1>
+
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Tyyppi</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for move in moves %}
+        <tr>
+            <td><a href="{{base_path}}/move/{{move.id}}">{{move.name}}</a></td>
+             <td>{{move.mtype}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

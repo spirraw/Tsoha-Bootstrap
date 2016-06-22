@@ -2,7 +2,6 @@
 {% block content %}
 {% import "macros/forms.html" as forms %}
 <h1>{{pokemon.name}}
-<!-- Painikkeet tähän -->
 <a href="{{base_path}}/pokemon/{{pokemon.id}}/add" class="btn btn-default">Lisää itselle</a>
 {{forms.edit_button("#{base_path}/pokemon/#{pokemon.id}/edit")}}
 {{forms.destroy_button("#{base_path}/pokemon/#{pokemon.id}/destroy")}}
@@ -20,7 +19,6 @@
     <li><strong>Kehittyy:</strong> <a href="{{base_path}}/pokemon/{{pokemon.evolution_of_id}}">tästä</a></li>
     {% endif %}
 </ul>
-<!-- Kuvaus tulee tähän -->
 <p> <strong>Kuvaus:</strong> </p>
 <p>
     {{pokemon.description}}

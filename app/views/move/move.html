@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+{% import "macros/forms.html" as forms %}
+<h1>{{move.name}}
+{{forms.edit_button("#{base_path}/move/#{move.id}/edit")}}
+{{forms.destroy_button("#{base_path}/move/#{move.id}/destroy")}}
+</h1>
+<p><strong>Ominaisuudet:</strong></p>
+<ul>
+    <li><strong>Tyyppi:</strong> {{move.mtype}}</li>
+    <li><strong>Kategoria:</strong> {{move.mcat}}</li>
+    <li><strong>PP:</strong> {{move.pp}}</li>
+    <li><strong>Power:</strong> {{move.power}}</li>
+    <li><strong>Tarkkuus:</strong> {{move.accuracy}}</li>
+</ul>
+<p> <strong>Kuvaus:</strong> </p>
+<p>
+    {{move.description}}
+</p>
+{% endblock %}
+

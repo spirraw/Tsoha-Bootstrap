@@ -2,7 +2,7 @@
 
 class Owned extends BaseModel {
 
-    public $id, $pokemon_id, $player_id, $name, $nickname, $added, $ptype, $ohp, $oattack, $odefense, $ospattack, $ospdefense, $ospeed, $description;
+    public $id, $pokemon_id, $player_id, $name, $nickname, $added, $ptype, $ohp, $oattack, $odefense, $ospattack, $ospdefense, $ospeed, $lvl, $description;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -29,6 +29,7 @@ class Owned extends BaseModel {
                 'ospattack' => $row['ospattack'],
                 'ospdefense' => $row['ospdefense'],
                 'ospeed' => $row['ospeed'],
+                'lvl' => $row['lvl'],
                 'description' => $row['description']
             ));
         }
@@ -57,6 +58,7 @@ class Owned extends BaseModel {
                 'ospattack' => $row['ospattack'],
                 'ospdefense' => $row['ospdefense'],
                 'ospeed' => $row['ospeed'],
+                'lvl' => $row['lvl'],
                 'description' => $row['description']
             ));
         }
@@ -65,19 +67,21 @@ class Owned extends BaseModel {
     }
 
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO OwnedPokemon (pokemon_id, player_id, name, nickname, added, ptype, ohp, oattack, odefense, ospattack, ospdefense, ospeed, description) VALUES (:pokemon_id, :player_id, :name, :nickname, :added, :ptype, :ohp, :oattack, :odefense, :ospattack, :ospdefense, :ospeed, :description) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO OwnedPokemon (pokemon_id, player_id, name, nickname, added, ptype, ohp, oattack, odefense, ospattack, ospdefense, ospeed, lvl, description) VALUES (:pokemon_id, :player_id, :name, :nickname, :added, :ptype, :ohp, :oattack, :odefense, :ospattack, :ospdefense, :ospeed, :lvl, :description) RETURNING id');
 
-        $query->execute(array('pokemon_id' => $this->pokemon_id, 'player_id' => $this->player_id, 'name' => $this->name, 'nickname' => $this->nickname, 'added' => $this->added, 'ptype' => $this->ptype, 'ohp' => $this->ohp, 'oattack' => $this->oattack, 'odefense' => $this->odefense, 'ospattack' => $this->ospattack, 'ospdefense' => $this->ospdefense, 'ospeed' => $this->ospeed, 'description' => $this->description));
+        $query->execute(array('pokemon_id' => $this->pokemon_id, 'player_id' => $this->player_id, 'name' => $this->name, 'nickname' => $this->nickname, 'added' => $this->added, 'ptype' => $this->ptype, 'ohp' => $this->ohp, 'oattack' => $this->oattack, 'odefense' => $this->odefense, 'ospattack' => $this->ospattack, 'ospdefense' => $this->ospdefense, 'ospeed' => $this->ospeed, 'lvl' => $this->lvl, 'description' => $this->description));
 
         $row = $query->fetch();
 
         $this->id = $row['id'];
+        
+        return $this->id;
     }
     
     public function update() {
-        $query = DB::connection()->prepare('UPDATE OwnedPokemon SET (pokemon_id, player_id, name, nickname, added, ptype, ohp, oattack, odefense, ospattack, ospdefense, ospeed, description) = (:pokemon_id, :player_id, :name, :nickname, :added, :ptype, :ohp, :oattack, :odefense, :ospattack, :ospdefense, :ospeed, :description) WHERE id = :id RETURNING id');
+        $query = DB::connection()->prepare('UPDATE OwnedPokemon SET (pokemon_id, player_id, name, nickname, added, ptype, ohp, oattack, odefense, ospattack, ospdefense, ospeed, lvl, description) = (:pokemon_id, :player_id, :name, :nickname, :added, :ptype, :ohp, :oattack, :odefense, :ospattack, :ospdefense, :ospeed, :lvl, :description) WHERE id = :id RETURNING id');
         
-        $query->execute(array('pokemon_id' => $this->pokemon_id, 'player_id' => $this->player_id, 'name' => $this->name, 'nickname' => $this->nickname, 'added' => $this->added, 'ptype' => $this->ptype, 'ohp' => $this->ohp, 'oattack' => $this->oattack, 'odefense' => $this->odefense, 'ospattack' => $this->ospattack, 'ospdefense' => $this->ospdefense, 'ospeed' => $this->ospeed, 'description' => $this->description, 'id' => $this->id));
+        $query->execute(array('pokemon_id' => $this->pokemon_id, 'player_id' => $this->player_id, 'name' => $this->name, 'nickname' => $this->nickname, 'added' => $this->added, 'ptype' => $this->ptype, 'ohp' => $this->ohp, 'oattack' => $this->oattack, 'odefense' => $this->odefense, 'ospattack' => $this->ospattack, 'ospdefense' => $this->ospdefense, 'ospeed' => $this->ospeed, 'lvl' => $this->lvl, 'description' => $this->description, 'id' => $this->id));
     
         return $query->fetch();
     }
@@ -95,6 +99,7 @@ class Owned extends BaseModel {
         $errors = array_merge($errors, parent::valCheck('Special Attack', $this->ospattack));
         $errors = array_merge($errors, parent::valCheck('Special Defense', $this->ospdefense));
         $errors = array_merge($errors, parent::valCheck('Speed', $this->ospeed));
+        $errors = array_merge($errors, parent::valCheck('Level', $this->lvl));
         return $errors;
     }
     
